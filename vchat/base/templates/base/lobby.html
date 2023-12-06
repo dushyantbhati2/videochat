@@ -1,0 +1,28 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+<main>
+    <section class="form-container">
+        <img id="logo" src="{% static 'images/chat-icon.png' %}"/>
+        <div>
+            <h1>Welcome to LetsChat</h1>
+            <p>A group video calling application just for you!!</p> 
+        </div>
+
+        <form id="form">
+            <div class="form-filed">
+                <input type="submit" value="Join"/>     
+        </form>
+    </section>
+</main>
+<script type="text/javascript">
+    let form= document.getElementById('form')
+
+    let handleSubmit=async(e)=>{
+        e.preventDefault()
+        window.open('/room/','_self')
+    }
+
+    form.addEventListener('submit',handleSubmit)
+</script>
+{% endblock content %}
