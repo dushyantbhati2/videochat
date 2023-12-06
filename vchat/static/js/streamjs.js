@@ -7,11 +7,8 @@ const client=AgoraRTC.createClient({mode:'rtc',codec:'vp8'})
 let localTracks=[]
 let remoteusers={}
 
-let joinAndDisplayLocalStream= async()=>{
+    client.on('user-published', handleUserJoined)
 
-    client.on('user-published',()=>{
-        console.log('user joined!!!!')
-    })
 
     UID=await client.join(APP_ID,CHANNEL,TOKEN,null)
     localTracks =await AgoraRTC.createMicrophoneAndCameraTracks()
